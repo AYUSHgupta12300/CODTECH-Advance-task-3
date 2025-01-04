@@ -1,0 +1,60 @@
+import nltk
+import spacy
+from nltk.tokenize import word_tokenize
+from nltk.corpus import wordnet
+from difflib import get_close_matches
+
+# Download NLTK resources
+nltk.download('punkt')
+nltk.download('wordnet')
+nltk.download('omw-1.4')
+
+# Load SpaCy language model
+nlp = spacy.load("en_core_web_sm")
+
+# Define some simple intents and responses
+intents = {
+    "greeting": ["hello", "hi", "hey", "greetings", "morning"],
+    "farewell": ["bye", "goodbye", "see you", "take care"],
+    "weather": ["weather", "forecast", "rain", "temperature"],
+    "help": ["help", "assist", "support", "need help"],
+}
+
+responses = {
+    "greeting": "Hello! How can I assist you today?",
+    "farewell": "Goodbye! Have a great day!",
+    "weather": "I am currently unable to fetch weather data. How else can I help you?",
+    "help": "I can help with various things! Try asking me about the weather or say 'hello'.",
+}
+
+# Synonym matching using WordNet
+def get_intent(user_input):
+    tokens = word_tokenize(user_input.lower())
+    for intent, keywords in intents.items():
+        for token in tokens:
+            if token in keywords:
+                return intent
+            synonyms = [lemma.name() for syn in wordnet.synsets(token) for lemma in syn.lemmas()]
+            if set(synonyms).intersection(keywords):
+                return intent
+    return "unknown"
+
+# Function to generate a response
+def generate_response(user_input):
+    intent = get_intent(user_input)
+    return responses.get(intent, "I'm sorry, I didn't understand that. Can you rephrase?")
+
+# Main chatbot loop
+def chatbot():
+    print("Chatbot: Hi! I am a simple chatbot. Type 'exit' to end the chat.")
+    while True:
+        user_input = input("You: ")
+        if user_input.lower() == "exit":
+            print("Chatbot: Goodbye!")
+            break
+        response = generate_response(user_input)
+        print(f"Chatbot: {response}")
+
+# Run the chatbot
+if _name_ == "_main_":
+    chatbot()
