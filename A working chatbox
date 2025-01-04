@@ -1,0 +1,9 @@
+Chatbot: Hi! I am a simple chatbot. Type 'exit' to end the chat.
+You: Hello
+Chatbot: Hello! How can I assist you today?
+You: How's the weather today?
+Chatbot: I am currently unable to fetch weather data, but you can ask about the weather generally.
+You: Help
+Chatbot: I can help with various things! Try asking me about the weather or say 'hello'.
+You: Bye
+Chatbot: Goodbye! Have a great day!
