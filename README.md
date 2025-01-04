@@ -1,1 +1,9 @@
-# CODTECH-Advance-task-3
+**Name**: AYUSH GUPTA 
+**Company**: CODTECH IT SOLUTIONS 
+**ID**: CTO8EWT 
+**Domain**: Python programming 
+**Duration**: DEC 2024 to JAN 2024 
+**Mentor**: SRAVANI GOUNI
+
+**Overview of the Project** 
+**Project**:BUILD A CHATBOT USING NATURAL LANGUAGE PROCESSING LIBRARIES LIKE NLTK OR SPACY, CAPABLE OF ANSWERING USER QUERIES.
